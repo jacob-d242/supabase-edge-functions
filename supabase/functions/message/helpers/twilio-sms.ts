@@ -26,9 +26,7 @@ export class TwilioSms {
         body: new URLSearchParams(payload).toString(),
       }
     );
-
     const data = await res.json();
-
     return data;
   }
 }
