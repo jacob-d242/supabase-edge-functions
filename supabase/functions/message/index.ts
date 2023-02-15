@@ -8,17 +8,12 @@ const fromMobile = Deno.env.get("TWILIO_PHONE_NUMBER") || "";
 
 serve(async (req) => {
   const { textMessage, toMobile } = await req.json();
-
   const twilioClient = new TwilioSms(accountSid, authToken);
-
   const message = await twilioClient.sendSms({
     Body: textMessage,
     From: fromMobile,
     To: toMobile,
   });
-
-  console.log({ message });
-
   const data = {
     isSuccess: false,
   };
